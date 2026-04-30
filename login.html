@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — MyApp</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Yeh poori page ko center mein rakhta hai -->
+  <div class="auth-wrapper">
+    <div class="auth-card">
+
+      <!-- Logo section — icon aur title -->
+      <div class="logo">
+        <div class="logo-icon">🔐</div>
+        <h1>Welcome Back</h1>
+        <p>Sign in to your account</p>
+      </div>
+
+      <!-- Message box — auth.js is div ko success/error dikhane ke liye use karta hai -->
+      <div id="message-box" class="message-box"></div>
+
+      <!-- Login form — id="login-form" zaroori hai JS ke liye -->
+      <form id="login-form">
+
+        <!-- Email field -->
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="you@example.com"
+            required
+            autocomplete="email"
+          />
+        </div>
+
+        <!-- Password field -->
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+            required
+            autocomplete="current-password"
+          />
+        </div>
+
+        <!-- Submit button — id="login-btn" JS mein disable/enable karta hai -->
+        <button type="submit" id="login-btn" class="btn btn-primary">
+          Sign In
+        </button>
+
+      </form>
+
+      <!-- OR divider — dono options ke beech mein -->
+      <div class="divider">or</div>
+
+      <!-- Google login button — id="google-login-btn" JS use karta hai -->
+      <button id="google-login-btn" class="btn btn-google">
+        <!-- Google ka official logo image -->
+        <img
+          src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+          alt="Google"
+        />
+        Continue with Google
+      </button>
+
+      <!-- Register page ka link -->
+      <div class="auth-link">
+        Don't have an account?
+        <a href="register.html">Create one</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- type="module" ZAROORI hai — Firebase ES modules use karta hai -->
+  <script type="module" src="js/login.js"></script>
+
+</body>
+</html>

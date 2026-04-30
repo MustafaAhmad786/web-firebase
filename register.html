@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register — MyApp</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Auth wrapper — page ko center karta hai -->
+  <div class="auth-wrapper">
+    <div class="auth-card">
+
+      <!-- Logo aur heading -->
+      <div class="logo">
+        <div class="logo-icon">✨</div>
+        <h1>Create Account</h1>
+        <p>Join us today, it's completely free</p>
+      </div>
+
+      <!-- Yahan success ya error message aata hai JS se -->
+      <div id="message-box" class="message-box"></div>
+
+      <!-- Register form — id="register-form" JS ke liye zaroori hai -->
+      <form id="register-form">
+
+        <!-- Naam field — Firebase profile mein store hoga -->
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input
+            type="text"
+            id="name"
+            placeholder="Muhammad Ali"
+            required
+            autocomplete="name"
+          />
+        </div>
+
+        <!-- Email field -->
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="you@example.com"
+            required
+            autocomplete="email"
+          />
+        </div>
+
+        <!-- Password field — kam az kam 6 characters chahiye -->
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Minimum 6 characters"
+            required
+            autocomplete="new-password"
+          />
+        </div>
+
+        <!-- Confirm password — JS check karta hai ke dono match karein -->
+        <div class="form-group">
+          <label for="confirm-password">Confirm Password</label>
+          <input
+            type="password"
+            id="confirm-password"
+            placeholder="Re-enter your password"
+            required
+            autocomplete="new-password"
+          />
+        </div>
+
+        <!-- Submit button — id="register-btn" JS mein use hota hai -->
+        <button type="submit" id="register-btn" class="btn btn-primary">
+          Create Account
+        </button>
+
+      </form>
+
+      <!-- Login page ka link -->
+      <div class="auth-link">
+        Already have an account?
+        <a href="login.html">Sign In</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- type="module" — Firebase ke liye zaroori -->
+  <script type="module" src="js/register.js"></script>
+
+</body>
+</html>

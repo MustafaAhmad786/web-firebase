@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — MyApp</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Dashboard ka poora layout wrapper -->
+  <div class="dashboard-layout">
+
+    <!-- Top navigation bar — logo aur logout button -->
+    <nav class="topbar">
+      <div class="topbar-logo">🔥 MyApp</div>
+      <!-- id="logout-btn" — dashboard.js is pe click listen karta hai -->
+      <button id="logout-btn" class="btn btn-logout">Logout</button>
+    </nav>
+
+    <!-- Main content area -->
+    <main class="dashboard-content">
+
+      <!-- Welcome card — user ka naam aur avatar dikhata hai -->
+      <div class="welcome-card">
+        <!-- id="user-initial" — JS yahan naam ka pehla harf likhta hai -->
+        <div class="avatar" id="user-initial">?</div>
+        <div class="welcome-text">
+          <!-- id="user-name" — JS yahan actual naam likhta hai -->
+          <h2>Welcome back, <span id="user-name">Loading...</span>! 👋</h2>
+          <p>You are successfully logged in to your account.</p>
+        </div>
+      </div>
+
+      <!-- Stats cards — user ki info dikhate hain -->
+      <div class="stats-grid">
+
+        <!-- Email card -->
+        <div class="stat-card">
+          <div class="stat-icon">📧</div>
+          <div class="stat-label">Email Address</div>
+          <!-- id="user-email" — JS yahan email likhta hai -->
+          <div class="stat-value" id="user-email">—</div>
+        </div>
+
+        <!-- Account bana ki date -->
+        <div class="stat-card">
+          <div class="stat-icon">📅</div>
+          <div class="stat-label">Member Since</div>
+          <!-- id="join-date" — JS yahan date likhta hai -->
+          <div class="stat-value" id="join-date">—</div>
+        </div>
+
+        <!-- Account status -->
+        <div class="stat-card">
+          <div class="stat-icon">✅</div>
+          <div class="stat-label">Account Status</div>
+          <div class="stat-value" style="color: #43e97b;">Active</div>
+        </div>
+
+        <!-- Security info -->
+        <div class="stat-card">
+          <div class="stat-icon">🔒</div>
+          <div class="stat-label">Security</div>
+          <div class="stat-value">Firebase Auth</div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <!-- type="module" — Firebase imports ke liye zaroori -->
+  <script type="module" src="js/dashboard.js"></script>
+
+</body>
+</html>

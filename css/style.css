@@ -1,0 +1,498 @@
+/* ============================================
+   🎨 style.css — Global Styles
+   Yeh file poori website ki design handle karti hai
+   Sari HTML files is ek file ko link karti hain
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+/* ── CSS Variables — Yahan se colors aur sizes control karein ── */
+:root {
+  --bg:         #0a0a0f;       /* Main background */
+  --bg2:        #12121a;       /* Input background */
+  --card:       #1a1a26;       /* Card background */
+  --border:     #2a2a3e;       /* Border color */
+  --accent:     #6c63ff;       /* Purple — main color */
+  --accent2:    #ff6584;       /* Pink — error/logout */
+  --accent3:    #43e97b;       /* Green — success */
+  --text:       #e8e8f0;       /* Main text */
+  --text-muted: #7878a0;       /* Light text */
+  --radius:     14px;          /* Border radius */
+  --shadow:     0 8px 32px rgba(108, 99, 255, 0.15);
+  --transition: 0.25s ease;
+}
+
+/* ── Reset — Sab browsers mein same dikhne ke liye ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ── Background gradient mesh — decorative background ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 20%, rgba(108,99,255,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80% 80%, rgba(255,101,132,0.06) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─────────────────────────────────────
+   AUTH PAGES (Login & Register)
+───────────────────────────────────── */
+.form-group input {
+  background-color: var(--bg2) !important;
+}
+
+.form-group input:focus {
+  background-color: var(--bg2) !important;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(108,99,255,0.12);
+}
+
+
+/* Poori page ko center karta hai */
+.auth-wrapper {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* White box jisme form hota hai */
+.auth-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 48px 40px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: var(--shadow);
+  animation: slideUp 0.4s ease;
+}
+
+/* Card ke aane ka animation */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Logo section — upar wala icon aur title */
+.logo {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.logo-icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 20px rgba(108,99,255,0.4);
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logo p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+/* ── Form fields ── */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Label — field ke upar chhota text */
+.form-group label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* Input field styling */
+.form-group input {
+  width: 100%;
+  background: var(--bg2);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  outline: none;
+}
+
+/* Input pe click karne pe purple border aata hai */
+.form-group input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(108,99,255,0.12);
+}
+
+.form-group input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+/* ── Buttons ── */
+.btn {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: var(--radius);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+/* Main submit button — purple gradient */
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), #8b7cf8);
+  color: white;
+  box-shadow: 0 4px 20px rgba(108,99,255,0.35);
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(108,99,255,0.45);
+}
+
+/* Disabled state — jab loading ho rahi ho */
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Google button */
+.btn-google {
+  background: var(--bg2);
+  color: var(--text);
+  border: 1.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.btn-google:hover {
+  border-color: var(--accent);
+  background: rgba(108,99,255,0.06);
+}
+
+.btn-google img {
+  width: 20px;
+  height: 20px;
+}
+
+/* OR divider */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* Register/Login link neeche */
+.auth-link {
+  text-align: center;
+  margin-top: 24px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.auth-link a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-link a:hover { text-decoration: underline; }
+
+/* ── Message Box — success/error messages ── */
+.message-box {
+  display: none;
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Green — success message */
+.message-box.success {
+  background: rgba(67, 233, 123, 0.1);
+  border: 1px solid rgba(67, 233, 123, 0.3);
+  color: var(--accent3);
+}
+
+/* Red — error message */
+.message-box.error {
+  background: rgba(255, 101, 132, 0.1);
+  border: 1px solid rgba(255, 101, 132, 0.3);
+  color: var(--accent2);
+}
+/* Autofill fix */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px var(--bg2) inset !important;
+  box-shadow: 0 0 0 1000px var(--bg2) inset !important;
+  -webkit-text-fill-color: var(--text) !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+/* ─────────────────────────────────────
+   DASHBOARD PAGE
+───────────────────────────────────── */
+
+.dashboard-layout {
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* Top navigation bar */
+.topbar {
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(10px);
+  z-index: 100;
+}
+
+.topbar-logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Logout button — pink color */
+.btn-logout {
+  background: rgba(255,101,132,0.1);
+  border: 1px solid rgba(255,101,132,0.25);
+  color: var(--accent2);
+  padding: 9px 20px;
+  width: auto;
+  font-size: 0.85rem;
+  border-radius: 10px;
+}
+
+.btn-logout:hover { background: rgba(255,101,132,0.2); }
+
+/* Dashboard ka main content area */
+.dashboard-content {
+  padding: 40px 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Welcome card — user ka naam aur avatar */
+.welcome-card {
+  background: linear-gradient(135deg, var(--card), rgba(108,99,255,0.1));
+  border: 1px solid rgba(108,99,255,0.25);
+  border-radius: 20px;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+/* Circular avatar — naam ka pehla letter */
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+  box-shadow: 0 4px 20px rgba(108,99,255,0.4);
+}
+
+.welcome-text h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.welcome-text p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* Grid — info cards ke liye */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+/* Har info card */
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: var(--transition);
+}
+
+.stat-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(108,99,255,0.1);
+}
+
+.stat-icon  { font-size: 1.6rem; margin-bottom: 12px; }
+.stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 500; }
+.stat-value { font-size: 1.05rem; font-weight: 600; margin-top: 4px; word-break: break-all; }
+
+/* ─────────────────────────────────────
+   LANDING PAGE (index.html)
+───────────────────────────────────── */
+
+.landing-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Upar chhota badge */
+.landing-badge {
+  background: rgba(108,99,255,0.12);
+  border: 1px solid rgba(108,99,255,0.25);
+  color: var(--accent);
+  font-size: 0.8rem;
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+/* Bari heading */
+.landing-wrapper h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+/* Colored word */
+.landing-wrapper h1 span {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.landing-wrapper p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  max-width: 480px;
+  margin-bottom: 36px;
+}
+
+/* Do buttons side by side */
+.landing-btns {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Outline button — Login */
+.btn-outline {
+  width: auto;
+  padding: 14px 28px;
+  background: transparent;
+  border: 1.5px solid var(--border);
+  color: var(--text);
+  border-radius: var(--radius);
+}
+
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Filled button — Get Started */
+.btn-filled {
+  width: auto;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, var(--accent), #8b7cf8);
+  color: white;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 20px rgba(108,99,255,0.35);
+}
+
+.btn-filled:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(108,99,255,0.45); }
+
+/* ── Mobile Responsive ── */
+@media (max-width: 500px) {
+  .auth-card         { padding: 32px 24px; }
+  .dashboard-content { padding: 24px 16px; }
+  .topbar            { padding: 14px 16px; }
+  .welcome-card      { flex-direction: column; text-align: center; }
+}
