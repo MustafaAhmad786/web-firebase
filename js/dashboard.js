@@ -53,3 +53,19 @@ document.getElementById("logout-btn").addEventListener("click", () => {
     logoutUser(); // auth.js wala function — Firebase signOut + login pe redirect
   }
 });
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+const auth = getAuth();
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    document.getElementById("user-name").innerText = user.displayName || "User";
+    document.getElementById("user-email").innerText = user.email;
+
+    // avatar letter
+    document.getElementById("user-initial").innerText =
+      user.displayName ? user.displayName.charAt(0).toUpperCase() : "U";
+  } else {
+    window.location.href = "login.html";
+  }
+});
