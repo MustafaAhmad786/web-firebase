@@ -48,7 +48,6 @@ document.getElementById("logout-btn").addEventListener("click", () => {
     logoutUser(); // auth.js wala function — Firebase signOut + login pe redirect
   }
 });
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
 const auth = getAuth();
 
