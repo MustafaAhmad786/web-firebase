@@ -21,25 +21,20 @@ checkAuth(true);
 // ─────────────────────────────────────────────
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    // displayName — register karte waqt jo naam diya tha
-    // Agar naam nahi tha (Google login) toh "User" likho
     const displayName = user.displayName || "User";
-    const email       = user.email;
+    const email = user.email;
 
-    // HTML elements mein user ki info daalo
-    document.getElementById("user-name").textContent    = displayName;
-    document.getElementById("user-email").textContent   = email;
+    document.getElementById("user-name").textContent = displayName;
+    document.getElementById("user-email").textContent = email;
 
-    // Avatar mein naam ka pehla capital letter dikhao
-    document.getElementById("user-initial").textContent = displayName.charAt(0).toUpperCase();
+    document.getElementById("user-initial").textContent =
+      displayName.charAt(0).toUpperCase();
 
-    // Account creation ki date format karo
     const createdAt = new Date(user.metadata.creationTime);
-    document.getElementById("join-date").textContent = createdAt.toLocaleDateString("en-US", {
-      year:  "numeric",
-      month: "long",
-      day:   "numeric"
-    });
+    document.getElementById("join-date").textContent =
+      createdAt.toLocaleDateString();
+  } else {
+    window.location.href = "login.html";
   }
 });
 
@@ -57,15 +52,3 @@ import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/
 
 const auth = getAuth();
 
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    document.getElementById("user-name").innerText = user.displayName || "User";
-    document.getElementById("user-email").innerText = user.email;
-
-    // avatar letter
-    document.getElementById("user-initial").innerText =
-      user.displayName ? user.displayName.charAt(0).toUpperCase() : "U";
-  } else {
-    window.location.href = "login.html";
-  }
-});
